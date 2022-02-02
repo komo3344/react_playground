@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from "./Button";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [counter, setValue] = useState(0);
+  const [keyword, setKeyword] = useState();
+  const onClick = () => setValue((prev) => prev + 1);
+  const onChange = (event) => setKeyword(event.target.value);
+  console.log("all the time");
+  useEffect(() => {
+    console.log("once");
+  }, []);
+  useEffect(() => {
+    console.log("I run keyword changed.");
+  }, [keyword]);
+  useEffect(() => {
+    console.log("I run counter changed.");
+  }, [counter]);
+  useEffect(() => {
+    console.log("I run counter&keyword changed.");
+  }, [counter, keyword]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input
+        value={keyword}
+        onChange={onChange}
+        type="text"
+        placeholder="search here.."
+      />
+      <h1>{counter}</h1>
+      <Button onClick={onClick} text={"button1"} />
     </div>
   );
 }
