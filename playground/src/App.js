@@ -12,7 +12,7 @@ function App() {
     setToDo("");
     setToDoList((currentArray) => [toDo, ...currentArray]);
   };
-  console.log(toDoList);
+
   return (
     <div>
       <h1>My To Do List ({toDoList.length})</h1>
@@ -21,10 +21,16 @@ function App() {
           onChange={onChange}
           value={toDo}
           type="text"
-          placeholder="blabla~"
+          placeholder="할 일을 적어주세요"
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      <ui>
+        {toDoList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ui>
     </div>
   );
 }
