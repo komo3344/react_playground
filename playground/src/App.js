@@ -1,11 +1,12 @@
 import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./routes/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Detail from "./routes/Detail";
+import Home from "./routes/Home";
+import Navigation from "./components/Navigation";
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="movie/:id" element={<Detail />} />
