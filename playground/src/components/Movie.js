@@ -1,8 +1,11 @@
-function Movie({ coverImg, title, summary, genres }) {
+import { Link } from "react-router-dom";
+function Movie({ id, coverImg, title, summary, genres }) {
   return (
     <div>
       <img src={coverImg} alt="Not found" />
-      <h2>{title}</h2>
+      <h2>
+        <Link to={`movie/${id}`}>{title}</Link>
+      </h2>
       <p>{summary}</p>
       <ul>
         {genres?.map((genre) => (
